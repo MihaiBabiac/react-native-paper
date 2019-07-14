@@ -152,6 +152,7 @@ class Button extends React.Component<Props, State> {
       style,
       theme,
       contentStyle,
+      numberOfLines,
       ...rest
     } = this.props;
     const { colors, roundness } = theme;
@@ -264,7 +265,13 @@ class Button extends React.Component<Props, State> {
               />
             ) : null}
             <Text
-              numberOfLines={1}
+              numberOfLines={
+                numberOfLines === undefined
+                  ? 1
+                  : numberOfLines === 0
+                  ? undefined
+                  : numberOfLines
+              }
               style={[
                 styles.label,
                 compact && styles.compactLabel,
